@@ -925,15 +925,25 @@ content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=
             }
     )
 
-var a=document.getElementById('a');
-    setInterval(function () {
-        let flag=a.style.color;
-        if(flag=='red'){
-            a.style.color='blue'
-        }else{
-            a.style.color='red'
+ var a=document.getElementById('a');
+    function age(){
+        if(getComputedStyle(a).display==='none'){
+            return
         }
-    },100)
+        var timer=setInterval(function () {
+            if(getComputedStyle(a).display==='none'){
+                clearInterval(timer)
+            }
+            let flag=a.style.color;
+            if(flag=='red'){
+                a.style.color='blue'
+            }else{
+                a.style.color='red'
+            }
+        },500)
+
+    }
+    age()
 </script>
 </body>
 </html>
