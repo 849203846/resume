@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport"
+content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script>
+        function refreshRem() {
+            document.documentElement.style.fontSize=document.documentElement.clientWidth/320*100+"px";
+        }
+        refreshRem();
+        window.addEventListener("resize",refreshRem,false);
+    </script>
+    <link rel="stylesheet" href="swiper.min.css">
+    <link rel="stylesheet" href="animate.css">
+
+
+    <style>
+
+        @media screen and (max-width:700px){
+            .a{
+                display: none;
+            }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        html, body, .main, .swiper-container, .swiper-slide {
+            height: 100%;
+            width: 100%;
+        }
+        .mp3 {
+            z-index: 2;
+            border: 1px solid black;
+            border-radius: 50%;
+            position: fixed;
+            right: 20px;
+            top: 20px;
+            display: block;
+            animation: myW 3s linear 0s infinite;
+            height: 30px;
+            background-size: 100%;
+            width: 30px;
+        }
+        @keyframes myW {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+        .bg {
+            background: url("img/1.jpg");
+            background-size: cover;
+            overflow: hidden;
+            clear: both;
+        }
+        .bga {
+            background: url("img/2.jpg");
+            background-size: cover;
+        }
+        .bg img:nth-child(1) {
+            display: block;
+            width: 3rem;
+            margin: .2rem auto;
+            opacity: 0;
+        }
+        #bg01 img:nth-child(1) {
+            animation: bounceInDown 1s linear;
+            opacity: 1;
+        }
+         .bg .a1-1 {
+            display: block;
+            width: 3rem;
+            opacity: 0;
+            margin: .6rem auto 0;
+        }
+
+        #bg01 .a1-1 {
+            animation: bounceInLeft 1.5s linear;
+            opacity: 1;
+        }
+        .bg .w{
+            display: block;
+            margin: .2rem auto;
+            width: 2.2rem;
+            opacity: 0;
+
+        }
+        .bg .logo {
+            position: absolute;
+            height: 1.5rem;
+            right: .2rem;
+            bottom: .2rem;
+            opacity: 0;
+        }
+        #bg01 .w{
+            animation: bounceInRight 3s linear;
+            opacity: 1;
+        }
+        #bg01 .logo {
+            animation: bounceInUp 2s linear;
+            opacity: 1;
+        }
+        .arrow {
+            position: absolute;
+            left: 50%;
+            bottom: .2rem;
+            z-index: 19;
+            width: .48rem;
+            height: .26rem;
+            margin-left: -.24rem;
+            background: url("img/web-swipe-tip.png") no-repeat;
+            background-size: 100% 100%;
+            -webkit-animation: myBounce .8s ease-in-out infinite;
+            -o-animation: myBounce .8s ease-in-out infinite;
+            animation: myBounce .8s ease-in-out infinite;
+        }
+        @keyframes myBounce {
+            0% {
+                bottom: 0;
+                opacity: 0;
+            }
+            100% {
+                bottom: .8rem;
+                opacity: 1;
+            }
+        }
+        .bga img:nth-child(1){
+            width: 3rem;
+            display: block;
+            margin: 0 auto;
+            height: 1.2rem;
+            transform-origin: top;
+            opacity: 0;
+        }
+        #bg03 img:nth-child(1){
+            opacity: 1;
+            animation:myrotate 3s ease-in-out;
+        }
+        @keyframes myrotate{
+            0%{
+                transform:rotate(-180deg)
+            }
+            20%{
+                transform:rotate(40deg)
+            }
+            40%{
+                transform:rotate(-40deg)
+            }
+            60%{
+                transform:rotate(20deg)
+            }
+            80%{
+                transform:rotate(-10deg)
+            }
+            100%{
+                transform:rotate(0deg)
+            }
+        }
+        .bga img:nth-child(2){
+            width: 3rem;
+            display: block;
+            margin: 0 auto;
+            height: 1.2rem;
+        }
+        .bga div{
+            background: url("img/2-2.png") no-repeat;
+            background-size: 100%;
+            height: .65rem;
+            font-size: .39rem;
+            text-align: center;
+            margin-top: .1rem;
+            width: 85%;
+            line-height: .65rem;
+            font-family: “微软雅黑”;
+            opacity: 0;
+        }
+        .bga div:nth-child(2n-1){
+            transform: translate(60px, 0);
+        }
+        #bg03 div:nth-child(2n){
+             opacity: 1;
+             animation:mybounceInLeft 4s ease-in-out ;
+         }
+        #bg03 div:nth-child(2n-1){
+             opacity: 1;
+            position: relative;
+            right:0;
+
+            animation:mybounceInRight 4s ease-in-out ;
+        }
+        @keyframes mybounceInRight {
+            from {
+                opacity: .2;
+                transform: translate(3000px, 0);
+            }
+            50% {
+                opacity: .4;
+                transform: translate(0, 0);
+            }
+
+            75% {
+                opacity: .6;
+                transform: translate(80px, 0);
+            }
+
+            90% {
+                opacity: .8;
+                transform: translate(30px, 0);
+            }
+            100%{
+                opacity: 1;
+                transform: translate(60px, 0);
+            }
+            to{
+                opacity: 1;
+                transform: translate(60px, 0);
+            }
+        }
+        @keyframes mybounceInLeft {
+            0% {
+                opacity: .2;
+                -webkit-transform: translate3d(-3000px, 0, 0);
+                transform: translate3d(-3000px, 0, 0);
+            }
+
+            60% {
+                opacity: .4;
+                -webkit-transform: translate3d(20px, 0, 0);
+                transform: translate3d(25px, 0, 0);
+            }
+
+            75% {
+                opacity: .6;
+                -webkit-transform: translate3d(-10px, 0, 0);
+                transform: translate3d(-10px, 0, 0);
+            }
+
+            90% {
+                opacity: .8;
+                -webkit-transform: translate3d(5px, 0, 0);
+                transform: translate3d(5px, 0, 0);
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+        .bgc img:nth-child(1){
+            display: block;
+            height: 1rem;
+            margin: .5rem auto 0;
+            transform-origin: right;
+            opacity: 0;
+        }
+        .bgc p{
+            transform-style: preserve-3d;
+            font-size: .20rem;
+            text-align: center;
+            height: .4rem;
+            line-height: .4rem;
+            color: black;
+            opacity: 0;
+            transform-origin: center;
+        }
+        #bg04 p{
+            animation: flipInX  2s linear ;
+            opacity: 1;
+        }
+        @keyframes myp {
+            0%{
+                opacity: 0;
+                transform:  scale(-1);
+            }
+            50%{
+                opacity: 1;
+                transform: scale(1.5);
+            }
+            75%{
+                opacity: .5;
+                transform: scale(.7);
+            }
+            100%{
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        #bg04 img:nth-child(1){
+            opacity: 1;
+            animation: rollln 1s ease-in-out ;
+        }
+
+        .bgc{
+            overflow: hidden;
+            background: url("img/3.jpg") no-repeat;
+            background-size: cover ;
+            width:100%;
+        }
+        .img2{
+             width: 1rem;
+            position: absolute;
+            bottom: .2rem;
+            left: 0;
+         }
+        @keyframes rollln {
+            from {
+                opacity: 0;
+                transform: scale(-1)
+            }
+            50%{
+                transform: scale(1.5)
+          }
+            75%{
+                transform: scale(.7) ;
+            }
+            to {
+                transform: scale(1) ;
+                opacity: 1;
+            }
+        }
+        .bgd{
+            background: url("img/4.jpg") no-repeat;
+            background-size: cover ;
+            width: 100%;
+            overflow: hidden;
+        }
+        .bgd b{
+            display: block;
+            margin-bottom: .2rem;
+            font-size: .2rem;
+        }
+        .bgd p{
+            opacity: 0;
+            width: 2.78rem;
+            margin-left: .3rem;
+            font-size: .2rem;
+        }
+        .bgd span{
+            color: red;
+            float: left;
+        }
+        .bgd .center{
+            display: inline-block;
+            margin-left: .6rem;
+            color: black;
+        }
+        .bgd .w{
+            display:block;
+            width: 80%;
+            margin: .4rem auto .4rem;
+            height: 1.2rem;
+            opacity: 0;
+        }
+        #bg02 .w{
+            opacity: 1;
+            animation: bounceInRight 1s linear ;
+        }
+        .bgd .head{
+            display: inline-block;
+            float: left;
+            width: .7rem;
+            height: .5rem;
+        }
+        #bg02 .head{
+            animation: myLeftRight 5s linear 2s infinite;
+        }
+        @keyframes myLeftRight {
+            from{
+                transform: translate(0, 0);
+            }
+            50%{
+                transform: translate(.1rem, 0);
+            }
+            to{
+                transform: translate(0, 0);
+            }
+        }
+
+        #bg02 p:nth-child(2n){
+            opacity: 1;
+            animation: bounceInLeft 2s linear;
+        }
+        #bg02 p:nth-child(2n-1){
+            opacity: 1;
+            animation: bounceInRight 2s linear;
+        }
+        .bge{
+            background: url("img/5.jpg") no-repeat ;
+            background-size: cover;
+        }
+        .bge b{
+            display: block;
+            font-size: .2rem;
+            text-align: center;
+            line-height: .32rem;
+            opacity: 0;
+        }
+        .bge b:nth-child(1){
+            margin-top:1.7rem ;
+        }
+        #bg05 b:nth-child(2n){
+            opacity: 1;
+            animation: myopa 2s linear  ;
+        }
+        #bg05 b:nth-child(2n-1){
+
+            animation: myopa 3s linear ;
+            opacity: 1;
+        }
+        @keyframes myopa {
+            from{
+                opacity: 0;
+            }
+            to{
+                opacity:1;
+            }
+        }
+        }
+        @media screen and (min-width: 701px)and (max-width: 1000px){
+            .a{
+                display: none;
+            }
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            html, body, .main, .swiper-container, .swiper-slide {
+                height: 100%;
+                width: 100%;
+            }
+            .mp3 {
+                z-index: 2;
+                border: 1px solid black;
+                border-radius: 50%;
+                position: fixed;
+                right: 20px;
+                top: 20px;
+                display: block;
+                animation: myW 3s linear 0s infinite;
+                height: 30px;
+                background-size: 100%;
+                width: 30px;
+            }
+            @keyframes myW {
+                from {
+                    transform: rotate(0deg);
+                }
+                to {
+                    transform: rotate(360deg);
+                }
+            }
+            .bg {
+                background: url("img/1.jpg");
+                background-size: cover;
+                overflow: hidden;
+                clear: both;
+            }
+            .bga {
+                background: url("img/2.jpg");
+                background-size: cover;
+            }
+            .bg img:nth-child(1) {
+                display: block;
+                width: 3rem;
+                margin: .2rem auto;
+                opacity: 0;
+            }
+            #bg01 img:nth-child(1) {
+                animation: bounceInDown 1s linear;
+                opacity: 1;
+            }
+            .bg .a1-1 {
+                display: block;
+                width: 3rem;
+                opacity: 0;
+                margin: .1rem auto 0;
+            }
+
+            #bg01 .a1-1 {
+                animation: bounceInLeft 1.5s linear;
+                opacity: 1;
+            }
+            .bg .w{
+                display: block;
+                margin: .2rem auto;
+                width: 2.2rem;
+                opacity: 0;
+
+            }
+            .bg .logo {
+                position: absolute;
+                height: 1.5rem;
+                right: .2rem;
+                bottom: .2rem;
+                opacity: 0;
+            }
+            #bg01 .w{
+                animation: bounceInRight 3s linear;
+                opacity: 1;
+            }
+            #bg01 .logo {
+                animation: bounceInUp 2s linear;
+                opacity: 1;
+            }
+            .arrow {
+                position: absolute;
+                left: 50%;
+                bottom: .2rem;
+                z-index: 19;
+                width: .48rem;
+                height: .26rem;
+                margin-left: -.24rem;
+                background: url("img/web-swipe-tip.png") no-repeat;
+                background-size: 100% 100%;
+                -webkit-animation: myBounce .8s ease-in-out infinite;
+                -o-animation: myBounce .8s ease-in-out infinite;
+                animation: myBounce .8s ease-in-out infinite;
+            }
+            @keyframes myBounce {
+                0% {
+                    bottom: 0;
+                    opacity: 0;
+                }
+                100% {
+                    bottom: .8rem;
+                    opacity: 1;
+                }
+            }
+            .bga img:nth-child(1){
+                width: 3rem;
+                display: block;
+                margin: 0 auto;
+                height: 1.2rem;
+                transform-origin: top;
+                opacity: 0;
+            }
+            #bg03 img:nth-child(1){
+                opacity: 1;
+                animation:myrotate 3s ease-in-out;
+            }
+            @keyframes myrotate{
+                0%{
+                    transform:rotate(-180deg)
+                }
+                20%{
+                    transform:rotate(40deg)
+                }
+                40%{
+                    transform:rotate(-40deg)
+                }
+                60%{
+                    transform:rotate(20deg)
+                }
+                80%{
+                    transform:rotate(-10deg)
+                }
+                100%{
+                    transform:rotate(0deg)
+                }
+            }
+            .bga img:nth-child(2){
+                width: 3rem;
+                display: block;
+                margin: 0 auto;
+                height: 1.2rem;
+            }
+            .bga div{
+                background: url("img/2-2.png") no-repeat;
+                background-size: 100%;
+                height: .65rem;
+                font-size: .39rem;
+                text-align: center;
+                margin-top: .1rem;
+                width: 85%;
+                line-height: .65rem;
+                font-family: “微软雅黑”;
+                opacity: 0;
+            }
+            .bga div:nth-child(2n-1){
+                transform: translate(120px, 0);
+            }
+            #bg03 div:nth-child(2n){
+                opacity: 1;
+                animation:mybounceInLeft 4s ease-in-out ;
+            }
+            #bg03 div:nth-child(2n-1){
+                opacity: 1;
+                animation:mybounceInRight 4s ease-in-out ;
+            }
+            @keyframes mybounceInRight {
+                from {
+                    opacity: .2;
+                    transform: translate(3000px, 0);
+                }
+                50% {
+                    opacity: .4;
+                    transform: translate(100px, 0);
+                }
+
+                75% {
+                    opacity: .6;
+                    transform: translate(130px, 0);
+                }
+
+                90% {
+                    opacity: .8;
+                    transform: translate(110px, 0);
+                }
+                100%{
+                    opacity: 1;
+                    transform: translate(120px, 0);
+                }
+                to{
+                    opacity: 1;
+                    transform: translate(120px, 0);
+                }
+            }
+            @keyframes mybounceInLeft {
+                0% {
+                    opacity: .2;
+                    -webkit-transform: translate3d(-3000px, 0, 0);
+                    transform: translate3d(-3000px, 0, 0);
+                }
+
+                60% {
+                    opacity: .4;
+                    -webkit-transform: translate3d(20px, 0, 0);
+                    transform: translate3d(25px, 0, 0);
+                }
+
+                75% {
+                    opacity: .6;
+                    -webkit-transform: translate3d(-10px, 0, 0);
+                    transform: translate3d(-10px, 0, 0);
+                }
+
+                90% {
+                    opacity: .8;
+                    -webkit-transform: translate3d(5px, 0, 0);
+                    transform: translate3d(5px, 0, 0);
+                }
+
+                to {
+                    opacity: 1;
+                }
+            }
+            .bgc img:nth-child(1){
+                display: block;
+                height: 1rem;
+                margin: .5rem auto 0;
+                transform-origin: right;
+                opacity: 0;
+            }
+            .bgc p{
+                transform-style: preserve-3d;
+                font-size: .20rem;
+                text-align: center;
+                height: .4rem;
+                line-height: .4rem;
+                color: black;
+                opacity: 0;
+                transform-origin: center;
+            }
+            #bg04 p{
+                animation: flipInX  2s linear ;
+                opacity: 1;
+            }
+            @keyframes myp {
+                0%{
+                    opacity: 0;
+                    transform:  scale(-1);
+                }
+                50%{
+                    opacity: 1;
+                    transform: scale(1.5);
+                }
+                75%{
+                    opacity: .5;
+                    transform: scale(.7);
+                }
+                100%{
+                    opacity: 1;
+                    transform: scale(1);
+                }
+            }
+            #bg04 img:nth-child(1){
+                opacity: 1;
+                animation: rollln 1s ease-in-out ;
+            }
+
+            .bgc{
+                overflow: hidden;
+                background: url("img/3.jpg") no-repeat;
+                background-size: cover ;
+                width:100%;
+            }
+            .img2{
+                width: 1rem;
+                position: absolute;
+                bottom: .2rem;
+                left: 0;
+            }
+            @keyframes rollln {
+                from {
+                    opacity: 0;
+                    transform: scale(-1)
+                }
+                50%{
+                    transform: scale(1.5)
+                }
+                75%{
+                    transform: scale(.7) ;
+                }
+                to {
+                    transform: scale(1) ;
+                    opacity: 1;
+                }
+            }
+            .bgd{
+                background: url("img/4.jpg") no-repeat;
+                background-size: cover ;
+                width: 100%;
+                overflow: hidden;
+            }
+            .bgd b{
+                display: block;
+                margin-bottom: .2rem;
+                font-size: .2rem;
+            }
+            .bgd p{
+                opacity: 0;
+                width: 2.78rem;
+                margin-left: .3rem;
+                font-size: .2rem;
+            }
+            .bgd span{
+                color: red;
+                float: left;
+            }
+            .bgd .center{
+                display: inline-block;
+                margin-left: .6rem;
+                color: black;
+            }
+            .bgd .w{
+                display:block;
+                width: 80%;
+                margin: .1rem auto .1rem;
+                height: 1.2rem;
+                opacity: 0;
+            }
+            #bg02 .w{
+                opacity: 1;
+                animation: bounceInRight 1s linear ;
+            }
+            .bgd .head{
+                display: inline-block;
+                float: left;
+                width: .7rem;
+                height: .5rem;
+            }
+            #bg02 .head{
+                animation: myLeftRight 5s linear 2s infinite;
+            }
+            @keyframes myLeftRight {
+                from{
+                    transform: translate(0, 0);
+                }
+                50%{
+                    transform: translate(.1rem, 0);
+                }
+                to{
+                    transform: translate(0, 0);
+                }
+            }
+
+            #bg02 p:nth-child(2n){
+                opacity: 1;
+                animation: bounceInLeft 2s linear;
+            }
+            #bg02 p:nth-child(2n-1){
+                opacity: 1;
+                animation: bounceInRight 2s linear;
+            }
+            .bge{
+                background: url("img/5.jpg") no-repeat ;
+                background-size: cover;
+            }
+            .bge b{
+                display: block;
+                font-size: .2rem;
+                text-align: center;
+                line-height: .32rem;
+                opacity: 0;
+            }
+            .bge b:nth-child(1){
+                margin-top:1.7rem ;
+            }
+            #bg05 b:nth-child(2n){
+                opacity: 1;
+                animation: myopa 2s linear  ;
+            }
+            #bg05 b:nth-child(2n-1){
+
+                animation: myopa 3s linear ;
+                opacity: 1;
+            }
+            @keyframes myopa {
+                from{
+                    opacity: 0;
+                }
+                to{
+                    opacity:1;
+                }
+            }
+        }
+
+        @media screen and (min-width: 1001px){
+            section{
+                display: none;
+            }
+        .a{
+            width: 100%;
+            height: 100%;
+            font-size: .4rem;
+            display: block;
+        }
+        }
+    </style>
+</head>
+<body>
+<div class="a" id="a" style="color: red">您的浏览器不支持本页面渲染，请切换到手机端</div>
+<section class="main">
+    <img src="img/mp3.png" alt="" class="mp3">
+    <audio src="img/a.mp3" id="music"
+          loop="loop" autoplay="autoplay" ></audio>
+    <div class="swiper-container">
+        <div class="swiper-wrapper ">
+            <div class="swiper-slide page1 bg" id="bg01">
+                <img src="img/1-1.png" alt="">
+
+                <img src="img/1-2.png" alt="" class="a1-1">
+                <img src="img/logo.png" alt="" class="logo">
+            </div>
+            <div class="swiper-slide page4 bgd" id="   ">
+                <img src="img/w.png" alt=" " class="w">
+                <p><b>自我介绍:</b></p>
+                <p>本人性格开朗，为人诚实谦虚，工作勤奋.认真负责。能吃苦耐劳。尽职尽责。有耐心，具有亲和力和团队沟通能力，善于与同事沟通</p>
+                <p><b>工作经验:</b></p>
+                <p><img src="img/4-1.png" alt="" class="head"><span >16年10月-17年8月</span><span class="center">艾维博瑞科技有限公司</span></p>
+            </div>
+            <div class="swiper-slide page2 bga" id=" ">
+                <img src="img/2-1.png" alt="">
+                <div>HTML/CSS</div>
+                <div>JS/EJS</div>
+                <div>Ajax/less</div>
+                <div>jQuery/Node</div>
+                <div>React/vue</div>
+        </div>
+            <div class="swiper-slide page3 bgc" id="  ">
+                <img src="img/3-1.png" alt="">
+                <p><b>姓名：王林</b></p>
+                <p>性别：男</p>
+                <p>年龄：25</p>
+                <p>学历：本科</p>
+                <p>毕业院校：石家庄建工科技大学</p>
+                <p>工作经验：3年</p>
+                <p>TeL:15011178492</p>
+                <P>QQ:849203846</P>
+                <img src="img/3-2.gif" alt="" class="img2">
+            </div>
+            <div class="swiper-slide page4 bge" id="    ">
+                <b>机会是留给有准备的人的</b>
+                <b>如果看好我请联系我哦！！！</b>
+                <b>TEL:15011178492</b>
+                <b>QQ:849203846</b>
+                <b>Email:15011178492@163.com</b>
+            </div>
+        </div>
+    </div>
+    <div class="arrow"> </div>
+
+</section>
+<script src="swiper.min.js"></script>
+<script>
+    var mp3 = document.getElementsByClassName("mp3")[0];
+    var audio = document.getElementById('music');
+    mp3.onclick = function () {
+        if (audio.paused) {
+            audio.play();
+            mp3.style.webkitAnimationPlayState = "running";
+        } else {
+            audio.pause();
+            mp3.style.webkitAnimationPlayState = "paused";
+        }
+    };
+    var swiper = new Swiper(".swiper-container", {
+                loop: true, direction: "vertical",paginationType:"bullets",
+                onSlideChangeEnd: function (swiper) {
+                    var slides = swiper.slides;
+                    var curIndex = swiper.activeIndex;
+                    var total = slides.length;
+                    var targetId = "bg0";
+                    switch (curIndex) {
+                        case 6:
+                            targetId += 1;
+                            break;
+                        case 0:
+                            targetId += 5;
+                            break;
+                        default:
+                            targetId+=curIndex
+                    }
+                    [].forEach.call(slides, function (item, index) {
+                        if (curIndex == index) {
+                            item.id = targetId
+                        } else {
+                            item.id = " ";
+                        }
+                    })
+                }
+            }
+    )
+
+var a=document.getElementById('a');
+    setInterval(function () {
+        let flag=a.style.color;
+        if(flag=='red'){
+            a.style.color='blue'
+        }else{
+            a.style.color='red'
+        }
+    },100)
+</script>
+</body>
+</html>
+
+
